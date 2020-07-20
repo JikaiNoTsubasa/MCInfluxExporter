@@ -7,6 +7,7 @@ public class Metric {
 	public static final String HEAP_PERCENT						= "mc_heap_percent";
 	public static final String ONLINE_PLAYERS_COUNT				= "mc_players_count";
 	public static final String ONLINE_PLAYERS_LIST				= "mc_players_list";
+	public static final String LIVING_ENTITIES					= "mc_living_entities";
 	
 	private String name, value;
 	

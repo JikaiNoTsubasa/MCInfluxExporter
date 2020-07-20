@@ -4,6 +4,7 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryUsage;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class GatherManager {
@@ -18,6 +19,14 @@ public class GatherManager {
 		}else {
 			return "-";
 		}
+	}
+	
+	public static int getEntities() {
+		int total = 0;
+		for (World w :Bukkit.getWorlds()) {
+			total += w.getLivingEntities().size();
+		}
+		return total;
 	}
 	
 	public static int getOnlinePlayersCount() {
