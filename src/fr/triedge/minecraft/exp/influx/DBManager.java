@@ -22,8 +22,8 @@ public class DBManager {
 		this.dbInfo = dbInfo;
 	}
 	
-	public String storeMetric(Metric metric) throws URISyntaxException, IOException {
-		HttpResponse response = sendPost(metric.getName()+" value="+metric.getValue());
+	public String storeMetric(String name, String value) throws URISyntaxException, IOException {
+		HttpResponse response = sendPost(name+" value="+value);
 		int code = response.getCode();
 		Header[] headers = response.getHeaders();
 		StringBuilder tmp = new StringBuilder();
@@ -42,6 +42,10 @@ public class DBManager {
 		tmp.append(response.getReasonPhrase());
 		tmp.append("]");
 		return tmp.toString();
+	}
+	
+	public String storeMetric(Metric metric) throws URISyntaxException, IOException {
+		return storeMetric(metric.getName(), metric.getCachedValue());
 	}
 	
 	private HttpResponse sendPost(String body) throws URISyntaxException, IOException {
