@@ -9,6 +9,7 @@ import fr.triedge.minecraft.exp.influx.DBInfo;
 public class PluginConf {
 
 	private DBInfo dbInfo;
+	private long gatherRate = 1000L;
 	
 	public PluginConf() {
 	}
@@ -20,5 +21,14 @@ public class PluginConf {
 	@XmlElement(name="DBInfo")
 	public void setDbInfo(DBInfo dbInfo) {
 		this.dbInfo = dbInfo;
+	}
+
+	public long getGatherRate() {
+		return gatherRate;
+	}
+
+	@XmlElement(name="GatherRate")
+	public void setGatherRate(long gatherRate) {
+		this.gatherRate = gatherRate;
 	}
 }

@@ -46,7 +46,10 @@ public class InfluxPlugin extends JavaPlugin{
 		loadDefaultMetrics();
 		
 		// Setup scheduler
-		this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new TaskExport(this), 0L, 1000L);
+		long rate = getPluginConfig().getGatherRate();
+		if (rate < 500L)
+			rate = 1000L;
+		this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new TaskExport(this), 0L, rate);
 	}
 	
 	private void loadDefaultMetrics() {
@@ -66,7 +69,7 @@ public class InfluxPlugin extends JavaPlugin{
 
 	private void loadConfiguration() {
 		File file = new File(CONF_FILE);
-		if (!file.getParentFile().exists()) {
+		if (!file.exists() || !file.getParentFile().exists()) {
 			getLogger().warning("Plugin folder doesn't exist!");
 			file.getParentFile().mkdirs();
 			getLogger().info("Created path: "+file.getParentFile().getAbsolutePath());
