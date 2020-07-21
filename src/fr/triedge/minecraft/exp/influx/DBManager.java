@@ -56,6 +56,8 @@ public class DBManager {
 		        .setPort(Integer.parseInt(getDbInfo().getPort()))
 		        .setPath("/write")
 		        .setParameter("db", getDbInfo().getDatabase())
+		        .setParameter("u", getDbInfo().getUsername())
+		        .setParameter("p", getDbInfo().getPassword())
 		        .build();
 		HttpPost httppost = new HttpPost(uri);
 		StringEntity entity = new StringEntity(body, ContentType.create("plain/text"));

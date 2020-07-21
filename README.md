@@ -9,6 +9,7 @@ Simple exporter for Minecraft metrics to InfluxDB:
 
 
 # Configuration file:
+
 It is created by default, but you can create it at first in plugins/MCInfluxExporter/config.xml like:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -23,3 +24,6 @@ It is created by default, but you can create it at first in plugins/MCInfluxExpo
 </PluginConf>
 
 ```
+# Full configuration
+
+You can follow my blog [here](http://triedge.fr/index.php/2020/07/21/minecraft-monitoring-with-grafana) to see how to display the metrics in Grafana and much more!
